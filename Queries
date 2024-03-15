@@ -1,0 +1,192 @@
+SELECT FirstName, LastName, Position
+FROM Employees;
+
+----------------------------------------------------------------------
+
+SELECT FirstName, LastName, Position, Salary + 500
+FROM Employees;
+
+
+---------------------------------------------------------------------
+
+SELECT FirstName, LastName, Position, 
+       Salary + 500 AS "Salary Plus Bonus"
+FROM Employees;
+
+
+
+/*INSERT INTO Employees (FirstName, LastName, Position, Email, Salary, DepartmentID, Gender) VALUES
+('Jason', 'Turner', 'Software Engineer', 'jason.turner@example.com', 58000, 2,'Male'),
+('Rachel', 'Lee', 'HR Specialist', 'rachel.lee@example.com', 50000, 3,NULL),
+('Eric', 'Cooper', 'Financial Planner', 'eric.cooper@example.com', 62000, 1,NULL),
+('Mia', 'Baker', 'Software Tester', 'mia.baker@example.com', 55000, 2, 'Female');*/
+
+SELECT DISTINCT Position
+FROM Employees;
+
+
+-------------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE salary >= 60000;
+
+------------------------------------------------------------------------------
+
+
+SELECT *
+FROM Employees
+WHERE Position = 'Software Engineer';
+
+
+------------------------------------------------------------------------------
+
+
+SELECT *
+FROM Employees
+WHERE LastName LIKE '%er';
+
+-------------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE LastName LIKE 'T_____';
+
+-------------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE LastName LIKE '_a%';
+
+
+-----------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE Gender IS NULL;
+
+-----------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE Gender IS NOT NULL;
+
+
+------------------------------------------------------------------------------
+
+
+SELECT *
+FROM Employees
+WHERE Salary BETWEEN 50000 AND 60000;
+
+
+
+-----------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE Salary < 50000
+      AND Position = 'HR Specialist';
+
+
+--------------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE Salary > 60000 OR DepartmentID = 3;
+
+
+-----------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE DepartmentID IN (2,3);
+
+--same above
+/*SELECT *
+FROM Employees
+WHERE DepartmentID = 2 OR  DepartmentID = 3;*/
+
+
+------------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE DepartmentID NOT IN (2, 1);
+
+
+-----------------------------------------------------------------
+
+SELECT *
+FROM Employees
+WHERE Position NOT IN ('HR Specialist', 'Product Manager');
+
+
+
+----------------------------------------------------------------
+
+
+SELECT FirstName, LastName, Position, Salary
+FROM Employees
+ORDER BY Salary;
+
+--------------------------------------------------------------
+
+
+SELECT FirstName, LastName, Position, Salary
+FROM Employees
+ORDER BY Salary DESC;
+
+--------------------------------------------------------------
+
+
+SELECT FirstName, LastName, Position, Salary
+FROM Employees
+ORDER BY Salary, Position DESC;
+
+------------------------------------------------------------------------------
+
+SELECT FirstName, LastName, Position, Salary
+FROM Employees
+ORDER BY Salary, Position DESC
+LIMIT 5;
+
+
+-----------------------------------------------------------------------
+
+
+SELECT FirstName, LastName, Position, Salary, DepartmentID
+FROM Employees
+WHERE DepartmentID = 3
+ORDER BY Salary
+LIMIT 3;
+
+---------------------------------------------------------------------
+
+
+SELECT EmployeeID, FirstName, LastName, Salary
+FROM Employees
+ORDER BY Salary
+LIMIT 5 OFFSET 3;
+
+----------------------------------------------------------------------------------
+
+
+SELECT FirstName, LastName, Salary, DepartmentID,
+CASE
+WHEN Salary >= 60000 AND DepartmentID = 1 THEN 'High Salary - HR Team'
+WHEN Salary >= 50000 AND DepartmentID = 2 THEN 'Moderate Salary - IT Team'
+WHEN Salary >= 40000 AND DepartmentID = 3 THEN 'Moderate Salary - Marketing Team'
+WHEN Salary <= 30000 THEN 'Low Salary'
+ELSE 'Other'
+END AS Category
+FROM Employees;
+
+
+
+
+select *
+from employees;
+
+select *
+from Departments;

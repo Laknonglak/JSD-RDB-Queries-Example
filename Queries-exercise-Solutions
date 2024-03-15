@@ -1,0 +1,41 @@
+--Exercise 1
+SELECT DISTINCT Position AS JobTitle 
+FROM Employees;
+
+
+--Exercise 2
+SELECT FirstName, LastName, Position, Salary, Email, Gender
+FROM Employees
+WHERE Position LIKE '%Manager%'
+  AND Salary BETWEEN 50000 AND 60000
+  AND DepartmentID != 1
+  AND (Gender IS NULL OR Gender = '');
+
+
+--Exercise 3
+SELECT FirstName, LastName, Position, Salary, Email
+FROM Employees
+WHERE (Position LIKE '%Software%' OR Position LIKE '%Manager%')
+  AND Salary BETWEEN 50000 AND 60000
+  AND DepartmentID IN (2, 3)
+  AND Email IS NOT NULL
+ORDER BY Salary DESC
+LIMIT 5;
+
+
+--Exercise 4
+SELECT FirstName, LastName, Salary,
+    CASE 
+        WHEN Salary > 55000 THEN 'Above Average'
+        ELSE 'Below Average'
+    END AS SalaryLabel
+FROM Employees
+ORDER BY Salary DESC;
+
+
+
+SELECT *
+FROM employees;
+
+SELECT *
+FROM departments;
